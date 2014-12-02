@@ -1,19 +1,9 @@
 package com.example.android.sunshine;
 
 import android.app.Activity;
-import android.app.Fragment;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 
 public class MainActivity extends Activity {
@@ -24,7 +14,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         if (savedInstanceState == null) {
             getFragmentManager().beginTransaction()
-                    .add(R.id.container, new PlaceholderFragment())
+                    .add(R.id.container, new ForecastFragment())
                     .commit();
         }
     }
@@ -52,49 +42,4 @@ public class MainActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    /**
-     * A placeholder fragment containing a simple view.
-     */
-    public static class PlaceholderFragment extends Fragment {
-
-        public PlaceholderFragment() {
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-
-            /*ArrayList<String> fakeData = new ArrayList<String>(6);
-            fakeData.add(0, "Today - Sunny - 88 / 63");
-            fakeData.add(1, "Tomorrow - Foggy - 70 / 46");
-            fakeData.add(2, "Wed - Cloudy - 72 / 63");
-            fakeData.add(3, "Thu - Rainy - 64 / 51");
-            fakeData.add(4, "Fri - Foggy - 70 / 46");
-            fakeData.add(5, "Sat - Sunny - 76 / 68");*/
-
-            String[] fakeDataArray = {
-                    "Today - Sunny - 88 / 63",
-                    "Tomorrow - Foggy - 70 / 46",
-                    "Wed - Cloudy - 72 / 63",
-                    "Thu - Rainy - 64 / 51",
-                    "Fri - Foggy - 70 / 46",
-                    "Sat - Sunny - 76 / 68"};
-
-            List<String> fakeData = new ArrayList<String>(
-                    Arrays.asList(fakeDataArray)
-            );
-
-            ArrayAdapter<String> aa = new ArrayAdapter<String>(
-                    getActivity(),
-                    R.layout.list_item_forecast,
-                    R.id.list_item_forecast_textView,
-                    fakeData);
-
-            ListView lv = (ListView) rootView.findViewById(R.id.listView_forecast);
-            lv.setAdapter(aa);
-
-            return rootView;
-        }
-    }
 }
