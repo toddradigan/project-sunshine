@@ -17,6 +17,7 @@
 package com.example.android.sunshine.app.service;
 
 import android.app.IntentService;
+import android.content.BroadcastReceiver;
 import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.Context;
@@ -311,5 +312,11 @@ public class SunshineService extends IntentService {
         return locationId;
     }
 
+    public static class AlarmReceiver extends BroadcastReceiver {
 
+        @Override
+        public void onReceive(Context context, Intent intent) {
+
+        }
+    }
 }
